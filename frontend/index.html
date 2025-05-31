@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Upload to AWS S3</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="bg-gray-100 min-h-screen flex items-center justify-center">
+    <div class="bg-white p-8 rounded-lg shadow-lg w-full max-w-md">
+      <h1 class="text-2xl font-bold mb-6 text-center text-gray-800">
+        Upload File to AWS S3
+      </h1>
+      <form id="uploadForm" class="flex flex-col gap-4">
+        <div>
+          <label
+            for="fileInput"
+            class="block w-full bg-gray-200 hover:bg-gray-300 text-gray-800 font-medium py-2 px-4 rounded-lg cursor-pointer text-center transition-colors border border-gray-300"
+            >Choose File</label
+          >
+          <input
+            type="file"
+            id="fileInput"
+            name="file"
+            required
+            class="hidden"
+          />
+          <span
+            id="fileName"
+            class="block mt-2 text-gray-700 text-sm text-center"
+            >No file chosen</span
+          >
+        </div>
+        <button
+          type="submit"
+          class="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-lg transition-colors"
+        >
+          Upload
+        </button>
+      </form>
+      <div id="result" class="mt-4 text-center text-sm text-gray-600"></div>
+    </div>
+    <script>
+      const fileInput = document.getElementById('fileInput')
+      const fileName = document.getElementById('fileName')
+      fileInput.addEventListener('change', function () {
+        fileName.textContent = this.files[0]
+          ? this.files[0].name
+          : 'No file chosen'
+      })
+    </script>
+    <script src="script.js"></script>
+  </body>
+</html>
