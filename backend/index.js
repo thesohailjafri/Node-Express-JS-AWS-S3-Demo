@@ -39,7 +39,6 @@ app.post('/upload', upload.single('file'), async (req, res) => {
     Key: req.file.originalname,
     Body: fileContent,
     ContentType: req.file.mimetype,
-    ACL: 'public-read', 
   }
   try {
     const data = await s3.upload(params).promise()
